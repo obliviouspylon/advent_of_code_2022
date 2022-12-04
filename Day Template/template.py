@@ -16,7 +16,8 @@ def part1(fileName):
 
 
 if __name__ == "__main__":
-    print(part1("Day 3\\input.txt"))
-    print(part1("Day 3\\example.txt"))
-    # print(part2("Day 3\\input.txt"))
-    # print(part2("Day 3\\example.txt"))
+    day = 0
+    print(part1("Day " + str(day) + "\\input.txt"))
+    print(part1("Day " + str(day) + "\\example.txt"))
+    # print(part2("Day " + str(day) + "\\input.txt"))
+    # print(part2("Day " + str(day) + "\\example.txt"))
