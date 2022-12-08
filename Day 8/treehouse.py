@@ -48,44 +48,69 @@ def part2(fileName):
             look_down = trees[i][j] - trees[i+1:,j]
 
             # Check Left of tree
-            edge = True
-            for k in range(len(look_left)):
-                if look_left[k] <= 0:
-                    tree_score = tree_score*(k+1)
-                    edge = False
-                    break
-            if edge:
-                tree_score = tree_score*(k+1)
+            if len(np.where(look_left<=0)[0]) != 0:
+                tree_score = tree_score*(min(np.where(look_left<=0))[0]+1)
+            else:
+                tree_score = tree_score*(len(look_left))
 
             # Check Right of tree
-            edge = True
-            for k in range(len(look_right)):
-                if look_right[k] <= 0:
-                    tree_score = tree_score*(k+1)
-                    edge = False
-                    break
-            if edge:
-                tree_score = tree_score*(k+1)
+            if len(np.where(look_right<=0)[0]) != 0:
+                tree_score = tree_score*(min(np.where(look_right<=0))[0]+1)
+            else:
+                tree_score = tree_score*(len(look_right))
 
-            # Check Above of tree
-            edge = True
-            for k in range(len(look_up)):
-                if look_up[k] <= 0:
-                    tree_score = tree_score*(k+1)
-                    edge = False
-                    break
-            if edge:
-                tree_score = tree_score*(k+1)
+            # Check Up of tree
+            if len(np.where(look_up<=0)[0]) != 0:
+                tree_score = tree_score*(min(np.where(look_up<=0))[0]+1)
+            else:
+                tree_score = tree_score*(len(look_up))
 
-            # Check below of tree
-            edge = True
-            for k in range(len(look_down)):
-                if look_down[k] <= 0:
-                    tree_score = tree_score*(k+1)
-                    edge = False
-                    break
-            if edge:
-                tree_score = tree_score*(k+1)
+            # Check Down of tree
+            if len(np.where(look_down<=0)[0]) != 0:
+                tree_score = tree_score*(min(np.where(look_down<=0))[0]+1)
+            else:
+                tree_score = tree_score*(len(look_down))
+
+            # # Check Left of tree
+            # edge = True
+            # for k in range(len(look_left)):
+            #     if look_left[k] <= 0:
+            #         print(k+1)
+            #         tree_score = tree_score*(k+1)
+            #         edge = False
+            #         break
+            # if edge:
+            #     tree_score = tree_score*(k+1)
+
+            # # Check Right of tree
+            # edge = True
+            # for k in range(len(look_right)):
+            #     if look_right[k] <= 0:
+            #         tree_score = tree_score*(k+1)
+            #         edge = False
+            #         break
+            # if edge:
+            #     tree_score = tree_score*(k+1)
+
+            # # Check Above of tree
+            # edge = True
+            # for k in range(len(look_up)):
+            #     if look_up[k] <= 0:
+            #         tree_score = tree_score*(k+1)
+            #         edge = False
+            #         break
+            # if edge:
+            #     tree_score = tree_score*(k+1)
+
+            # # Check below of tree
+            # edge = True
+            # for k in range(len(look_down)):
+            #     if look_down[k] <= 0:
+            #         tree_score = tree_score*(k+1)
+            #         edge = False
+            #         break
+            # if edge:
+            #     tree_score = tree_score*(k+1)
 
             if tree_score > score:
                 score = tree_score
