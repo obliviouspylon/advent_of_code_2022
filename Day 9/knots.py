@@ -78,8 +78,9 @@ def part2(fileName):
     # for i in range(10):
     #     knots.append([15,11])
     # Input
-    grid = np.zeros((1000,1000),dtype=int)
-    grid[100,100] = 1
+    # grid = np.zeros((1000,1000),dtype=int)
+    # grid[100,100] = 1
+    grid = {}
     for i in range(10):
         knots.append([100,100])
     with open(fileName,"r") as f:
@@ -92,7 +93,7 @@ def part2(fileName):
             steps = int(line[1])
 
             for step in range(steps):
-                count = np.sum(np.sum(grid))
+                # count = np.sum(np.sum(grid))
                 match direction:
                     case "U":
                         knots[0][0] = knots[0][0]-1
@@ -126,9 +127,11 @@ def part2(fileName):
                             else:
                                 knots[i][1] = knots[i][1] - 1
                         # Update grid
-                        grid[knots[-1][0],knots[-1][1]] = 1
+                        # grid[knots[-1][0],knots[-1][1]] = 1
+                        grid[str(knots[-1][0])+","+str(knots[-1][1])] = 1
             line = f.readline()
-    score = np.sum(np.sum(grid))
+    # score = np.sum(np.sum(grid))
+    score = len(grid.keys())
     return score
 
 if __name__ == "__main__":
